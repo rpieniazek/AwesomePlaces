@@ -17,21 +17,20 @@ export default class App extends React.Component {
         })
     };
 
-    placeSubmitHandler = (prevState) => {
-        //validate input
-
-        const currentPlaces = this.state.places;
+    placeSubmitHandler = () => {
         const placeName = this.state.placeName;
-        this.setState({
-            places: [...currentPlaces, placeName]
-        })
+        if (placeName.trim().length !== 0) {
+            this.setState({
+                places: this.state.places.concat({key: Math.random(), value: placeName})
+            })
+        }
     };
 
-    placeDeletedHandler = (index) => {
+    placeDeletedHandler = (key) => {
         this.setState(prevState => {
             return {
-                places: prevState.places.filter((place, i) => {
-                    return i !== index;
+                places: prevState.places.filter((place) => {
+                    return place.key !== key;
                 })
             }
         })

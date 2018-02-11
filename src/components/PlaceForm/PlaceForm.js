@@ -1,7 +1,16 @@
 import {View, TextInput, Button, StyleSheet} from "react-native";
 import * as React from "react";
 
-const placeForm = (props) => {
+placeForm = (props) => {
+
+    placeSubmitHandler = () => {
+        if (this.state.placeName.trim() === "") {
+            return;
+        }
+
+        this.props.onPlaceAdded(this.state.placeName);
+    };
+
     return (
         <View style={styles.inputContainer}>
             <TextInput
