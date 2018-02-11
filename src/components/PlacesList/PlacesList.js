@@ -3,7 +3,12 @@ import {StyleSheet, Text, View} from "react-native";
 import ListItem from "./ListItem/ListItem";
 
 const placeList = (props) => {
-    const placesOutput = props.places.map((place, i) => <ListItem key={i} place={place}/>);
+    const placesOutput = props.places.map((place, i) =>
+        <ListItem
+            key={i}
+            place={place}
+            onItemPressed={() => props.onItemDeleted(i)}
+        />);
 
     return (
         <View style={styles.placesList}>
